@@ -4,10 +4,10 @@ let f : (int, int * int option) Hashtbl.t = Hashtbl.create 1
 let rec print_product = function
   | (p, None) -> 
     print_endline (Int.to_string p)
-  | (p, Some y) ->
+  | (p, Some j) ->
     print_string (Int.to_string p);
     print_string " * ";
-    print_product (Hashtbl.find f y)
+    print_product (Hashtbl.find f j)
   ;;
 
 let rec loop k =
@@ -18,12 +18,12 @@ let rec loop k =
       | [] -> 
         print_endline (Int.to_string k ^ " is prime");
         Hashtbl.add h (k + k) (k, 2)
-      | pys ->
+      | pjs ->
         Hashtbl.remove h k;
-        List.iter (fun (p, y) ->
-          c := (p, Some y);
-          Hashtbl.add h (k + p) (p, y + 1)
-        ) pys
+        List.iter (fun (p, j) ->
+          c := (p, Some j);
+          Hashtbl.add h (k + p) (p, j + 1)
+        ) pjs
     end;
     begin
       match !c with
