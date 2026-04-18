@@ -1,2 +1,2 @@
 # tinyfactor
-minimal code to factorize integers
+minimal code to enumerate primes and factorizations of integers.
